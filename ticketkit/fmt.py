@@ -8,11 +8,16 @@ def format_duration(seconds):
     '1小时5分'
     >>> format_duration(90000)
     '1天1小时'
+    >>> format_duration(45)
+    '45秒'
     """
     seconds = int(seconds)
     days, rest = divmod(seconds, 86400)
     hours, rest = divmod(rest, 3600)
     minutes = rest // 60
+
+    if not (days or hours or minutes):
+        return f"{seconds}秒"
 
     parts = []
     if days:
