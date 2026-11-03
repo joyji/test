@@ -51,6 +51,14 @@ class FormatTest(unittest.TestCase):
     def test_days_hours(self):
         self.assertEqual(format_duration(90000), "1天1小时")
 
+    def test_sub_minute(self):
+        self.assertEqual(format_duration(45), "45秒")
+
+    def test_sub_minute_boundaries(self):
+        self.assertEqual(format_duration(0), "0秒")
+        self.assertEqual(format_duration(59), "59秒")
+        self.assertEqual(format_duration(60), "1分")
+
 
 class ReportTest(unittest.TestCase):
     def test_summarize(self):
